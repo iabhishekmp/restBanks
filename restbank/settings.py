@@ -25,7 +25,7 @@ SECRET_KEY = '^yq(h(#2)rj_rmh-(+4(1dxybcc+b_hi#6v^qg$*8+ol2&q6+h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['restbanks.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
