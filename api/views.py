@@ -1,12 +1,11 @@
 import csv
-
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import HttpResponseRedirect, render
 from django.urls import reverse
 from django.views import View
 from .models import Bank, Branch
-# from .serializers import BranchSerializer
+from .serializers import BranchSerializer
 def home(request):
 
     if request.method == 'GET':
@@ -55,15 +54,15 @@ def home(request):
         return render(request, 'import.html')
 
 
-# def detailView(request, ifsc):
-#     branch = Branch.objects.filter(ifsc__iexact=ifsc).first()
-#     serializer = BranchSerializer(branch)
-#     return JsonResponse(serializer.data, safe=False)
+def detailView(request, ifsc):
+    branch = Branch.objects.filter(ifsc__iexact=ifsc).first()
+    serializer = BranchSerializer(branch)
+    return JsonResponse(serializer.data, safe=False)
 
 
 
-# def listView(request, city, bank):
-#     branch_qset = Branch.objects.filter(
-#         city__iexact=city, bank__name__icontains=bank)
-#     serializer = BranchSerializer(branch_qset, many=True)
-#     return JsonResponse(serializer.data, safe=False)
+def listView(request, city, bank):
+    branch_qset = Branch.objects.filter(
+        city__iexact=city, bank__name__icontains=bank)
+    serializer = BranchSerializer(branch_qset, many=True)
+    return JsonResponse(serializer.data, safe=False)
